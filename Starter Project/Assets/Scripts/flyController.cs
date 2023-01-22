@@ -9,6 +9,8 @@ public class flyController : MonoBehaviour
     public GameObject part;
     public GameObject swatter;
     private swatterController controller;
+    public AudioSource audioSource;
+    public AudioClip deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class flyController : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = deathSprite;
             Instantiate(part, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             controller.score = controller.score + 1;
+            audioSource.PlayOneShot(deathSound, 1);
             isDead = true;
         }
     }
